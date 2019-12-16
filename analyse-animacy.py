@@ -2,7 +2,8 @@ from rdflib import Graph
 from rdflib.plugins import sparql
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-#import annotated_tokens as toks
+import annotated_tokens as toks
+import time
 
 class OpenWordnetpt:
 	
@@ -35,26 +36,38 @@ class OpenWordnetpt:
 
 wordnetpt   = OpenWordnetpt()
 graph 		= Graph()
+print("\nCarregando grafo da Wordnet na memoria...")
+print("Isso pode levar em torno de 6 minutos ou mais.")
 graph.parse("own-pt.nt", format="nt")
-
-sentence = "O homem cachorro que mudou o mundo"
-
-words = set(word_tokenize(sentence.lower()))
 
 H_lexicos = []
 A_lexicos = []
 I_lexicos = []
 
-for tk in H_tokens:
-	H_lexicos.append(wordnetpt.synsets(tk))
-for tk in A_tokens:
-	A_lexicos.append(wordnetpt.synsets(tk))
-for tk in I_tokens:
-	I_lexicos.append(wordnetpt.synsets(tk))
+print("\n# RETORNO DOS LEXICOS PARA OS TOKENS HUMANOS:\n") 
+time.sleep(2)
+for tk in toks.H_tokens:
+    H_lexicos.append(wordnetpt.synsets(tk))
+    print("TOKEN: {}".format(tk))
+    print("LEXICO: {}".format(wordnetpt.synsets(tk)))
+print("\n# RETORNO DOS LEXICOS PARA OS TOKENS DE OUTROS ANIMADOS:\n") 
+time.sleep(2)
+for tk in toks.A_tokens:
+    A_lexicos.append(wordnetpt.synsets(tk))
+    print("TOKEN: {}".format(tk))
+    print("LEXICO: {}".format(wordnetpt.synsets(tk)))
+print("\n# RETORNO DOS LEXICOS PARA OS TOKENS INANIMADOS:\n")
+time.sleep(2)
+for tk in toks.I_tokens:
+    I_lexicos.append(wordnetpt.synsets(tk))
+    print("TOKEN: {}".format(tk))
+    print("LEXICO: {}".format(wordnetpt.synsets(tk)))
 
+'''
 print(len(H_lexicos))
-print(H_lexicos[0])
+print(H_lexicos[0][-1])
 print(len(A_lexicos))
 print(A_lexicos[0])
 print(len(I_lexicos))
 print(I_lexicos[0])
+'''

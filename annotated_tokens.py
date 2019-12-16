@@ -47,8 +47,8 @@ def main():
     global corpus
     while index < len(corpus):
         token()
-    print(len(H_tokens))
-    print(len(A_tokens))
-    print(len(I_tokens))
+    print("Número de tokens marcados como 'Humanos': {}".format(len(H_tokens)))
+    print("Número de tokens marcados como 'Outros animados': {}".format(len(A_tokens)))
+    print("Número de tokens marcados como 'Inanimados': {}".format(len(I_tokens)))
 
 main()
