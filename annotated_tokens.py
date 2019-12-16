@@ -33,11 +33,11 @@ def token():
     
     if tk:
         if 'H_' == tk[0:2]:
-            H_tokens.append(tk[2:])
+            H_tokens.append(tk[2:].lower())
         elif 'A_' == tk[0:2]:
-            A_tokens.append(tk[2:])
+            A_tokens.append(tk[2:].lower())
         else:
-            I_tokens.append(tk)
+            I_tokens.append(tk.lower())
 
     index = i
     return(tk)
@@ -46,16 +46,9 @@ def main():
     initialize_variables()
     global corpus
     while index < len(corpus):
-        print(token())
-    print(H_tokens)
+        token()
+    print(len(H_tokens))
     print(len(A_tokens))
     print(len(I_tokens))
 
 main()
-'''
-for i in range(0,len(corpus)):
-    if corpus[i] == ' ':
-
-    if corpus[i] == '_':
-        if corpus[i-1] == 'H'
-'''

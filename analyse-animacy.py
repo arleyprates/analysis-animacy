@@ -2,6 +2,7 @@ from rdflib import Graph
 from rdflib.plugins import sparql
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+#import annotated_tokens as toks
 
 class OpenWordnetpt:
 	
@@ -40,10 +41,20 @@ sentence = "O homem cachorro que mudou o mundo"
 
 words = set(word_tokenize(sentence.lower()))
 
-lexicos = []
+H_lexicos = []
+A_lexicos = []
+I_lexicos = []
 
-for word in words:
-	lexicos.append(wordnetpt.synsets(word))
+for tk in H_tokens:
+	H_lexicos.append(wordnetpt.synsets(tk))
+for tk in A_tokens:
+	A_lexicos.append(wordnetpt.synsets(tk))
+for tk in I_tokens:
+	I_lexicos.append(wordnetpt.synsets(tk))
 
-for lexico in lexicos:
-	print(lexico)
+print(len(H_lexicos))
+print(H_lexicos[0])
+print(len(A_lexicos))
+print(A_lexicos[0])
+print(len(I_lexicos))
+print(I_lexicos[0])
